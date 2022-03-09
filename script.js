@@ -1,4 +1,5 @@
 var start = document.getElementById('start');
+var reset = document.getElementById('reset');
 var stop = document.getElementById('stop');
 
 let running;
@@ -30,16 +31,31 @@ class timer{
     reset() {
         clearInterval(running);
         document.getElementById('watch').textContent = "00:00:00:00";
+        this.ms = 0;
+        this.sec = 0;
+        this.min = 0;
+        this.hrs = 0;
     }
+
+
+    stop() {
+        clearInterval(running);
+    }
+
 }
 
 var watch = new timer(0, 0, 0, 0);
 
 
 start.onclick = function() {
+    
     watch.start();
 }
 
-stop.onclick = function() {
+reset.onclick = function() {
    watch.reset();
 }
+
+stop.onclick = function() {
+    watch.stop();
+ }
